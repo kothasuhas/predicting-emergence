@@ -7,7 +7,14 @@ In this challenge, you will put this definition to the test! Thanks to [Eleuther
 
 <p align="center"><img width="623" alt="Screen Shot 2023-11-30 at 6 10 12 PM" src="https://github.com/kothasuhas/predicting_emergence/assets/38450656/4cd4c7b7-48aa-48f1-a979-3b5d13c10041"></p>
 
-This repo provides such datasets for 1000 prefixes of the [GLUE RTE dataset](https://huggingface.co/datasets/glue/viewer/rte) and 1000 prefixes of the [Wikipedia dataset](https://huggingface.co/datasets/wikipedia). These datasets are provided as pickle files `glue-rte.pkl` and `wikipedia.pkl`. For the specific construction process and format, refer to how they are generated/saved in `preprocess_train.py` and how they are loaded in `challenge.py`. If you think you have a function that can predict the next-token prediction distribution, put your idea to the test by writing a `strategy` in `challenge.py`! If you're happy with the train performance of your method, email the author at `suhask@andrew.cmu.edu` for the real evaluation of a held-out test distribution. If you perform better than some trivial strategies, I have some available prizes; if you perform particularly strong, we can get a research paper out of this :))
+This repo provides such datasets for 100 prefixes of the [GLUE RTE dataset](https://huggingface.co/datasets/glue/viewer/rte) and 100 prefixes of the [Wikipedia dataset](https://huggingface.co/datasets/wikipedia). These datasets are provided as pickle files `glue-rte.pkl` and `wikipedia.pkl`. Each pickle file contains a tuple of the following information
+- `model_names`: names of the models we have logits for (our files have 7)
+- `sentences`: all the prefixes we consider (our files have 100)
+- `probs_per_sentence`: a `(NUM_SENTENCES x NUM_MODELS x NUM_TOKENS)` array, where `probs_per_sentence[i][j][k]` has, for prefix `sentences[i]`, the probability `model_names[j]` assigns token `k` (our arrays are 100 x 7 x 50277)
+
+For the specific construction process and format, refer to how they are generated/saved in `preprocess_train.py` and how they are loaded in `challenge.py`. 
+
+If you think you have a function that can predict the next-token prediction distribution, put your idea to the test by writing a `strategy` in `challenge.py`! If you're happy with the train performance of your method, email the author at `suhask@andrew.cmu.edu` for the real evaluation of a held-out test distribution. If you perform better than some trivial strategies, I have some available prizes; if you perform particularly strong, we can get a research paper out of this :))
 
 This is meant to be a hard (and likely impossible) challenge, so don't get upset if you make little progress. Hopefully, this builds some intuition for how language models behave across scale in a fun challenge. Best of luck!
 
