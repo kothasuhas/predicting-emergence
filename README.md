@@ -1,6 +1,6 @@
 # Predicting Emergence
 
-_For a visual introduction, please look at [these introduction slides](./README.md)_
+_For a visual introduction, please look at [these introduction slides](./introduction.pdf)_
 
 People consistently debate whether language models display "emergent abilities", but it's difficult to define the phenomenon in the first place. One simple definition is whether a model's next token distribution predictably changes as we scale up the model's parameters and keep everything else constant. Interestingly, this lends itself to a clean emergence test: can one predict a larger model's activations from smaller models with the same training algorithm and data distribution? 
 
